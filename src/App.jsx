@@ -15,7 +15,7 @@ import MainLayout from "../layouts/MainLayout";
 import { ProtectedRoutes } from "../components/ProtectedRoutes";
 
 function App() {
-  let user = false;
+  let user = true;
   const routes = createBrowserRouter([
     {
       path: "/",
