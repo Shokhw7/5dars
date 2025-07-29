@@ -10,7 +10,7 @@ function Product({ prod }) {
       <img
         src={prod.thumbnail}
         alt={prod.title}
-        className="w-full h-48 object-cover rounded-lg mb-4"
+        className="pl-19 h-48 object-cover rounded-lg mb-4"
       />
       <h3 className="text-xl font-semibold text-gray-800 mb-2">{prod.title}</h3>
       <p className="text-lg text-green-600 font-bold">${prod.price}</p>
