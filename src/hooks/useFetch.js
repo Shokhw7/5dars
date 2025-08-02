@@ -13,7 +13,8 @@ export const useFetch = (url) => {
         const req = await axios(url);
         if (req.status != 200) throw new Error(req.statusText);
         setData(req.data);
-      } catch (error) { 'Request failed with status code 404'
+      } catch (error) {
+        ("error");
         console.log(error.message);
         setError(error.message);
       } finally {

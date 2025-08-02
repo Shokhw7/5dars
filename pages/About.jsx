@@ -1,4 +1,4 @@
-import React from 'react'
+import { useGlobalContext } from '../src/hooks/useGlobalContext'
 
 function About() {
   return (

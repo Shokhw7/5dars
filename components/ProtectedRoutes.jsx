@@ -1,10 +1,9 @@
-import { Children } from "react";
 import { Navigate } from "react-router-dom";
 
-export const ProtectedRoutes = ({ children, user }) => {
-  if (user) {
-    return children;
-  } else {
-    return <Navigate to="/login" />;
+export const ProtectedRoutes = ({children, user}) =>{
+  if(user){
+    return children
+  }else{
+    return <Navigate to="login"/>
   }
-};
+}

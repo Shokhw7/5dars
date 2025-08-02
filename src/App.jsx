@@ -5,6 +5,7 @@ import Contact from "../pages/Contact";
 import SingleProducts from "../pages/SingleProducts";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Basket from "../pages/Basket";
 
 import {
   createBrowserRouter,
@@ -13,9 +14,10 @@ import {
 } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import { ProtectedRoutes } from "../components/ProtectedRoutes";
+import { useGlobalContext } from "./hooks/useGlobalContext";
 
 function App() {
-  let user = true;
+  const {user} = useGlobalContext();
   const routes = createBrowserRouter([
     {
       path: "/",
@@ -36,6 +38,10 @@ function App() {
         {
           path: "/contact",
           element: <Contact />,
+        },
+        {
+          path: "/basket",
+          element: <Basket />,
         },
         {
           path: "singleProduct/:id",
