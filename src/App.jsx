@@ -1,19 +1,21 @@
-import "./App.css";
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Contact from "../pages/Contact";
-import SingleProducts from "../pages/SingleProducts";
-import Login from "../pages/Login";
-import Register from "../pages/Register";
-import Basket from "../pages/Basket";
+import{
+  About,
+  Contact,
+  Basket,
+  Home,
+  Login,
+  Register,
+  SingleProducts,
+} from "./pages"
+
 
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
 } from "react-router-dom";
-import MainLayout from "../layouts/MainLayout";
-import { ProtectedRoutes } from "../components/ProtectedRoutes";
+import MainLayout from "./layouts/MainLayout";
+import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { useGlobalContext } from "./hooks/useGlobalContext";
 
 function App() {

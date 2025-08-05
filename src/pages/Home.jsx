@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import ProductList from "../components/ProductList";
-import { useFetch } from "../src/hooks/useFetch";
+import { useFetch } from "../hooks/useFetch";
 
 function Home() {
   // const [products, setProducts] = useState(null);

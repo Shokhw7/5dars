@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useFetch } from "../src/hooks/useFetch";
+import { useFetch } from "../hooks/useFetch";
 
 function SingleProducts() {
   const { id } = useParams();
