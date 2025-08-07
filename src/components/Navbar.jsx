@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { useGlobalContext } from "../hooks/useGlobalContext";
 import { useTheme } from "../hooks/useTheme";
+import { FaHeart } from "react-icons/fa";
 
 function Navbar() {
-  const { totalAmount } = useGlobalContext();
-  const { changeTheme , theme} = useTheme();
+  const { totalAmount, likedProducts } = useGlobalContext();
+  const { changeTheme, theme } = useTheme();
 
   return (
     <header className="bg-base-200">
@@ -28,9 +29,22 @@ function Navbar() {
         </div>
 
         <div className="navbar-end">
+          <Link to="/favorites" className="btn btn-ghost relative mr-4">
+            {likedProducts.length > 0 && (
+              <span className="indicator-item badge badge-secondary h-[20px] w-[20px] flex items-center justify-center absolute -top-2 -right-2">
+                {likedProducts.length}
+              </span>
+            )}
+            <FaHeart size={26} />
+          </Link>
+
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
-            <input onChange={changeTheme} type="checkbox" checked={theme === "dark"} />
+            <input
+              onChange={changeTheme}
+              type="checkbox"
+              checked={theme === "dark"}
+            />
 
             {/* sun icon */}
             <svg

@@ -8,6 +8,7 @@ const globalStateFromLocal = () => {
     : {
         user: true,
         products: [],
+        likedProducts: [],
         totalAmount: 0,
         totalPrice: 0,
       };
@@ -51,6 +52,20 @@ const changeState = (state, action) => {
       return {
         ...state,
         products: state.products.filter((product) => product.id !== payload),
+      };
+    case "ADD_LIKED":
+      const alreadyLiked = state.likedProducts.some((p) => p.id === payload.id);
+      if (alreadyLiked) return state;
+      return {
+        ...state,
+        likedProducts: [...state.likedProducts, payload],
+      };
+    case "REMOVE_LIKED":
+      return {
+        ...state,
+        likedProducts: state.likedProducts.filter((p) => {
+          return p.id != payload;
+        }),
       };
     default:
       return state;

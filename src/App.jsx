@@ -1,4 +1,4 @@
-import{
+import {
   About,
   Contact,
   Basket,
@@ -6,8 +6,8 @@ import{
   Login,
   Register,
   SingleProducts,
-} from "./pages"
-
+  Favorites,
+} from "./pages";
 
 import {
   createBrowserRouter,
@@ -19,7 +19,7 @@ import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { useGlobalContext } from "./hooks/useGlobalContext";
 
 function App() {
-  const {user} = useGlobalContext();
+  const { user } = useGlobalContext();
   const routes = createBrowserRouter([
     {
       path: "/",
@@ -40,6 +40,10 @@ function App() {
         {
           path: "/contact",
           element: <Contact />,
+        },
+        {
+          path: "/favorites",
+          element: <Favorites />,
         },
         {
           path: "/basket",

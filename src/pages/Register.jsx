@@ -1,99 +1,38 @@
-import React from "react";
 import { Link } from "react-router-dom";
+import FormInput from "../components/FormInput";
 
-const Register = () => {
+function Register() {
+  const {register} = useRegister()
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.target)
+
+    const displayName = formData.get("displayName")
+    const password = formData.get("password")
+    const email = formData.get("email")
+
+    register(email, displayName, password)
+  }
   return (
-    <div className="pt-30 flex items-center justify-center px-4">
-      <div className="max-w-md w-96 bg-base-100 p-8 shadow-lg rounded-lg">
-        <h2 className="text-3xl font-bold text-center mb-6">Register</h2>
-
-        <label className="input input-bordered flex items-center gap-2 mb-4">
-          <svg
-            className="h-[1em] opacity-50"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <g
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
-              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-              <circle cx="12" cy="7" r="4"></circle>
-            </g>
-          </svg>
-          <input
-            type="text"
-            required
-            placeholder="Username"
-            pattern="[A-Za-z][A-Za-z0-9\-]*"
-            minLength="3"
-            maxLength="30"
-            title="Only letters, numbers or dash"
-            className="grow"
-          />
-        </label>
-
-        <label className="input input-bordered flex items-center gap-2 mb-4">
-          <svg
-            className="h-[1em] opacity-50"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <g
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
-              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-            </g>
-          </svg>
-          <input type="email" required placeholder="Email" className="grow" />
-        </label>
-
-        <label className="input input-bordered flex items-center gap-2 mb-6">
-          <svg
-            className="h-[1em] opacity-50"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <g
-              strokeLinejoin="round"
-              strokeLinecap="round"
-              strokeWidth="2.5"
-              fill="none"
-              stroke="currentColor"
-            >
-              <path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"></path>
-              <circle cx="16.5" cy="7.5" r=".5" fill="currentColor"></circle>
-            </g>
-          </svg>
-          <input
-            type="password"
-            required
-            placeholder="Password"
-            minLength="8"
-            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            title="Must be more than 8 characters, including number, lowercase letter, uppercase letter"
-            className="grow"
-          />
-        </label>
-
-        <button className="btn btn-neutral w-full">Register</button>
-        <p className="text-sm text-center mt-4 text-gray-600">
-          or {" "}
-          <Link to="/login" className="text-blue-600 hover:underline">
-            sign in
-          </Link>
-        </p>
+    <section className="min-h-screen grid place-items-center">
+      <div className="w-full flex flex-col items-center">
+        <h3 className="text-center font-bold text-3xl">Register</h3>
+        <form onSubmit={handleSubmit} action="" className="w-full max-w-96">
+          <FormInput label="Display Name:" name="displayName" type="text" />
+          <FormInput label="Email:" name="email" type="email" />
+          <FormInput label="Password" name="password" type="password" />
+          <div className="flex justify-center my-10">
+            <button type="submit" className="btn btn-secondary">Register</button>
+          </div>
+        </form>
+        <div>
+          <p>
+            If you have account,{" "} <Link className="link link-primary" to="/Login">Login</Link>{" "}
+          </p>
+        </div>
       </div>
-    </div>
+    </section>
   );
-};
+}
 
 export default Register;
